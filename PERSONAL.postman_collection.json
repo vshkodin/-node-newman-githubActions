@@ -8,9 +8,33 @@
 	"item": [
 		{
 			"name": "New Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var expect_status = 200",
+							"pm.response.to.have.status(expect_status)",
+							"pm.test(\"Verify expected Status code = \"+expect_status, () => {pm.expect(pm.response.code).to.eql(expect_status);});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "https://vshkodin.com/",
+					"protocol": "https",
+					"host": [
+						"vshkodin",
+						"com"
+					],
+					"path": [
+						""
+					]
+				}
 			},
 			"response": []
 		}
